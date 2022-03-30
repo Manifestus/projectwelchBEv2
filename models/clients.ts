@@ -1,6 +1,6 @@
 'use strict';
 
-import { Model, InferAttributes, InferCreationAttributes, CreationOptional } from '@sequelize/core'
+import { Model, InferAttributes, InferCreationAttributes, CreationOptional, UUIDV4 } from '@sequelize/core'
 
 
 module.exports = (sequelize: any, DataTypes: { UUID: any; STRING: any; }) => {
@@ -15,12 +15,30 @@ module.exports = (sequelize: any, DataTypes: { UUID: any; STRING: any; }) => {
     }
   }
   Clients.init({
-    client_id: DataTypes.UUID,
-    first_name: DataTypes.STRING,
-    last_name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    country: DataTypes.STRING,
-    address: DataTypes.STRING
+    client_id: {
+      type: DataTypes.UUID,
+      defaultValue: UUIDV4
+    },
+    first_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    last_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    country: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
   }, {
     sequelize,
     modelName: 'Clients',

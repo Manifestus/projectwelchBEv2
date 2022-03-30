@@ -1,25 +1,19 @@
 'use strict';
 module.exports = {
   async up(queryInterface, DataTypes) {
-    await queryInterface.createTable('Clients', {
-      client_id: {
+    await queryInterface.createTable('Items', {
+      item_id: {
         type: DataTypes.UUID,
         primaryKey: true
       },
-      first_name: {
+      name: {
         type: DataTypes.STRING
       },
-      last_name: {
+      description: {
         type: DataTypes.STRING
       },
-      email: {
-        type: DataTypes.STRING
-      },
-      country: {
-        type: DataTypes.STRING
-      },
-      address: {
-        type: DataTypes.STRING
+      cost: {
+        type: DataTypes.FLOAT
       },
       createdAt: {
         allowNull: false,
@@ -32,6 +26,6 @@ module.exports = {
     });
   },
   async down(queryInterface, DataTypes) {
-    await queryInterface.dropTable('Clients');
+    await queryInterface.dropTable('Items');
   }
 };
