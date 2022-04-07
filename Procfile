@@ -1,4 +1,5 @@
 web: npm start
 "start": "ts-node src/index.ts",
-"ts-node": "^3.3.0",
-"typescript": "^2.4.2"
+"ts-node": "^10.7.0",
+"ts-node-dev": "^1.1.8",
+"typescript": "^4.6.3"
