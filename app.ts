@@ -1,13 +1,23 @@
-require('dotenv').config()
+require("dotenv").config();
 
-import express from 'express'
 import db from './models'
+import { createExpressServer } from "routing-controllers";
+import { ClientController } from "./controllers/client.controller";
 
-const app = express()
-const port = process.env.DATABASE_PORT || 3000;
+const port = 3000;
 
+//Routing init
+console.info(`Starting server on http://localhost:${port}`);
+
+const routes = [ClientController];
+
+const app = createExpressServer({
+  controllers: routes,
+});
+//Sequelize Connector
 db.sequelize.authenticate().then(() => {
-    app.listen(port, () => {
-        console.log(`app is listening on port ${port}`)
-    })
-})
+  app.listen(port);
+  app.get("/", (req: any, res: any) => {
+    res.send("Hello World!");
+  });
+});

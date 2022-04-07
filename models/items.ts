@@ -29,7 +29,7 @@ module.exports = (
     {
       item_id: {
         type: DataTypes.UUID,
-        defaultValue: UUIDV4,
+        defaultValue: DataTypes.UUID,
         primaryKey: true,
       },
       name: {

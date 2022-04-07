@@ -22,15 +22,15 @@ module.exports = (
      */
     static associate(models: any) {
       // define association here
-      Orders.hasMany(models.Clients, { foreignKey: "client_id" });
-      Orders.belongsTo(models.orderItem, { foreignKey: "orderitem_id" });
+      Orders.belongsTo(models.Clients, { foreignKey: "client_id" });
+      Orders.hasMany(models.orderItem, { foreignKey: "orderitem_id" });
     }
   }
   Orders.init(
     {
       order_id: {
         type: DataTypes.UUID,
-        defaultValue: UUIDV4,
+        defaultValue: DataTypes.UUID,
         primaryKey: true,
       },
       client_id: {

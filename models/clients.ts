@@ -19,14 +19,14 @@ module.exports = (sequelize: any, DataTypes: { UUID: any; STRING: any }) => {
      */
     static associate(models: any) {
       // define association here
-      this.belongsTo(models.Orders, { foreignKey: "client_id" });
+      this.hasMany(models.Orders, { foreignKey: "client_id" });
     }
   }
   Clients.init(
     {
       client_id: {
         type: DataTypes.UUID,
-        defaultValue: UUIDV4,
+        defaultValue: DataTypes.UUID,
         primaryKey: true,
       },
       first_name: {

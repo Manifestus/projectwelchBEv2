@@ -22,7 +22,7 @@ module.exports = (
      */
     static associate(models: any) {
       // define association here
-      this.hasMany(models.Orders, { foreignKey: "orderitem_id" });
+      this.belongsTo(models.Orders, { foreignKey: "orderitem_id" });
       this.belongsToMany(models.Items, { through: "orderedItems" });
     }
   }
@@ -30,7 +30,7 @@ module.exports = (
     {
       orderitem_id: {
         type: DataTypes.UUID,
-        defaultValue: UUIDV4,
+        defaultValue: DataTypes.UUID,
         allowNull: false,
         primaryKey: true,
       },
