@@ -4,7 +4,7 @@ import db from './models'
 import { createExpressServer } from "routing-controllers";
 import { ClientController } from "./controllers/client.controller";
 
-const port = 3000;
+const port = 5000;
 
 //Routing init
 console.info(`Starting server on http://localhost:${port}`);
