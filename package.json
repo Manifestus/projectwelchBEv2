@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsnd --respawn app.ts"
+    "dev": "tsnd --respawn app.ts",
+    "run": "tsnd --respawn app.ts",
+    "start": "tsnd --respawn app.ts"
   },
   "keywords": [],
   "author": "",
