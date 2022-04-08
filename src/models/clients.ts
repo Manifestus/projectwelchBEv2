@@ -1,10 +1,6 @@
 "use strict";
 
-import {
-  InferAttributes,
-  InferCreationAttributes,
-  UUIDV4,
-} from "@sequelize/core";
+import { InferAttributes, InferCreationAttributes } from "@sequelize/core";
 
 const { Model } = require("sequelize");
 module.exports = (sequelize: any, DataTypes: { UUID: any; STRING: any }) => {

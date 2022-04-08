@@ -3,7 +3,6 @@
 import {
   InferAttributes,
   InferCreationAttributes,
-  UUIDV4,
 } from "@sequelize/core";
 
 const { Model } = require("sequelize");

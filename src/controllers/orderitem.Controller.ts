@@ -14,7 +14,7 @@ import { orderItemService } from "../services/orderitem.service";
 export class OrderItemController {
   private orderItemService: orderItemService;
   constructor() {
-    this.orderItemService = new orderItemService()
+    this.orderItemService = new orderItemService();
   }
 
   @Get("/orderitem")
@@ -31,12 +31,13 @@ export class OrderItemController {
 
   @Post("/orderitem")
   post(@Body() orderItem: any) {
-    const neworderItems = this.orderItemService.createOrderItem(orderItem)
-    return neworderItems
+    const neworderItems = this.orderItemService.createOrderItem(orderItem);
+    return neworderItems;
   }
 
   @Put("/orderitem/:orderitem_id")
   put(@Param("id") orderitem_id: string, @Body() user: any) {
+    console.log(user);
     return orderitem_id;
   }
 

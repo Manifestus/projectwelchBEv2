@@ -3,13 +3,15 @@ require("dotenv").config();
 import db from './models'
 import { createExpressServer } from "routing-controllers";
 import { ClientController } from "./controllers/client.controller";
+import { OrderController } from "./controllers/order.controller";
+import { OrderItemController } from "./controllers/orderitem.Controller";
 
 const port = 5000;
 
 //Routing init
 console.info(`Starting server on http://localhost:${port}`);
 
-const routes = [ClientController];
+const routes = [ClientController, OrderController, OrderItemController];
 
 const app = createExpressServer({
   controllers: routes,
