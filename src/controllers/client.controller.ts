@@ -36,12 +36,14 @@ export class ClientController {
   }
 
   @Put("/clients/:client_id")
-  put(@Param("id") client_id: string, @Body() user: any) {
+    put(@Param("id") client_id: string, @Body() user: any) {
+      console.log(client_id, user)
     return "Updating a user...";
   }
 
   @Delete("/clients/:client_id")
   remove(@Param("client_id") client_id: string) {
+    console.log(client_id)
     return "Removing user...";
   }
 }

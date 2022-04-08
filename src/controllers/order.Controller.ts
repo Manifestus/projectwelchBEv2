@@ -15,18 +15,18 @@ export class OrderController {
 
   @Get("/orders")
   getAll() {
-    const clients = this.orderService.getOrders();
-    return clients;
+    const order = this.orderService.getOrders();
+    return order;
   }
 
   @Get("/orders/:orders_id")
   getOne(@Param("orders_id") uuid: string) {
-    const client = this.orderService.getOrder(uuid);
-    return client;
+    const order = this.orderService.getOrder(uuid);
+    return order;
   }
 
   @Delete("/orders/:orders_id")
   remove(@Param("orders_id") order_id: string) {
-    return "Removing user...";
+    return order_id;
   }
 }

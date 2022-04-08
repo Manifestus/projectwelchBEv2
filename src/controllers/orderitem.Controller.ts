@@ -37,11 +37,11 @@ export class OrderItemController {
 
   @Put("/orderitem/:orderitem_id")
   put(@Param("id") orderitem_id: string, @Body() user: any) {
-    return "Updating a user...";
+    return orderitem_id;
   }
 
   @Delete("/orderitem/:orderitem_id")
   remove(@Param("orderitem_id") orderitem_id: string) {
-    return "Removing user...";
+    return orderitem_id;
   }
 }

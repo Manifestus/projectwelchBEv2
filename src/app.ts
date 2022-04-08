@@ -18,6 +18,7 @@ const app = createExpressServer({
 db.sequelize.authenticate().then(() => {
   app.listen(port);
   app.get("/", (req: any, res: any) => {
+    console.log(req)
     res.send("Hello World!");
   });
 });
