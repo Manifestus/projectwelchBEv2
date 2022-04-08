@@ -10,7 +10,6 @@ import {
 import "reflect-metadata";
 import { orderItemService } from "../services/orderitem.service";
 
-
 @JsonController()
 export class OrderItemController {
   private orderItemService: orderItemService;
