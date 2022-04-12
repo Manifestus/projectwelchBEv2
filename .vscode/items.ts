@@ -8,11 +8,11 @@ import {
 const { Model } = require("sequelize");
 module.exports = (
   sequelize: any,
-  DataTypes: { UUID: any; UUIDV4: any; STRING: any; INTEGER: any }
+  DataTypes: { UUID: any; STRING: any; FLOAT: any }
 ) => {
-  class orderItem extends Model<
-    InferAttributes<orderItem>,
-    InferCreationAttributes<orderItem>
+  class Items extends Model<
+    InferAttributes<Items>,
+    InferCreationAttributes<Items>
   > {
     /**
      * Helper method for defining associations.
@@ -21,43 +21,34 @@ module.exports = (
      */
     static associate(models: any) {
       // define association here
-      this.belongsTo(models.Orders, { foreignKey: "orderitem_id" });
-      this.belongsToMany(models.Items, { through: "orderedItems" });
+      this.belongsToMany(models.orderItem, { through: "orderedItems" });
     }
   }
-  orderItem.init(
+  Items.init(
     {
-      orderitem_id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUID,
-        allowNull: false,
-        primaryKey: true,
-      },
-      image: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      size: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      text: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      color: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
       item_id: {
         type: DataTypes.UUID,
+        defaultValue: DataTypes.UUID,
+        primaryKey: true,
+      },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      cost: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
       },
     },
     {
       sequelize,
       timestamps: false,
-      modelName: "orderItem",
+      modelName: "Items",
     }
   );
-  return orderItem;
+  return Items;
 };

@@ -1,32 +1,25 @@
-"use strict";
+import { DataTypes, InferAttributes, InferCreationAttributes, Model } from "@sequelize/core/types";
 
-import {
-  InferAttributes,
-  InferCreationAttributes,
-} from "@sequelize/core";
+const { Sequelize } = require('@sequelize/core');
+const sequelize: any = new Sequelize(process.env.DATABASE_URI)
 
-const { Model } = require("sequelize");
-module.exports = (
-  sequelize: any,
-  DataTypes: { UUID: any; STRING: any; FLOAT: any }
-) => {
-  class Items extends Model<
-    InferAttributes<Items>,
-    InferCreationAttributes<Items>
-  > {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models: any) {
-      // define association here
-      this.belongsToMany(models.orderItem, { through: "orderedItems" });
-    }
+class Items extends Model <
+InferAttributes<Items>,
+InferCreationAttributes<Items>
+>{
+    public item_id!: string;
+    public name!: string;
+    public description!: string;
+    public cost!: string;
+
+  static associate(models: any) {
+    this.belongsToMany(models.orderItem, { through: "orderedItems" });
   }
-  Items.init(
-    {
-      item_id: {
+}
+
+Items.init(
+  {
+    item_id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUID,
         primaryKey: true,
@@ -43,12 +36,14 @@ module.exports = (
         type: DataTypes.FLOAT,
         allowNull: false,
       },
-    },
-    {
-      sequelize,
-      timestamps: false,
-      modelName: "Items",
-    }
-  );
-  return Items;
-};
+  },
+  {
+    sequelize: sequelize,
+    timestamps: false,
+    modelName: "Items",
+  }
+);
+
+export default Items;
+
+
