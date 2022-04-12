@@ -1,6 +1,6 @@
 import { IClient } from "../interfaces/client";
 
-const { Clients } = require('../models')
+const { Clients } = require('../models/clients')
 
 export class clientService {
   constructor() {}
