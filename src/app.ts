@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-import {db} from './models'
+import { sequelize } from "./models/index";
 import { createExpressServer } from "routing-controllers";
 import { ClientController } from "./controllers/client.controller";
 import { OrderController } from "./controllers/order.controller";
@@ -17,10 +17,14 @@ const app = createExpressServer({
   controllers: routes,
 });
 //Sequelize Connector
-db.authenticate().then(() => {
+try {
+  sequelize.authenticate().then(() => {
   app.listen(port);
   app.get("/", (req: any, res: any) => {
     console.log(req)
     res.send("Hello World!");
   });
 });
+} catch (error) {
+  
+}
