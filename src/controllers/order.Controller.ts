@@ -27,6 +27,7 @@ export class OrderController {
 
   @Delete("/orders/:orders_id")
   remove(@Param("orders_id") order_id: string) {
-    return order_id;
+    const deleteOrder = this.orderService.deleteOrder(order_id)
+    return deleteOrder;
   }
 }

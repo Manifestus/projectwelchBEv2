@@ -9,6 +9,7 @@ import {
 } from "routing-controllers";
 import "reflect-metadata";
 import { orderItemService } from "../services/orderitem.service";
+import { WhereOptions } from "sequelize/types";
 
 @JsonController()
 export class OrderItemController {
@@ -36,13 +37,14 @@ export class OrderItemController {
   }
 
   @Put("/orderitem/:orderitem_id")
-  put(@Param("id") orderitem_id: string, @Body() user: any) {
-    console.log(user);
-    return orderitem_id;
+  put(@Param("id") orderitem_id: WhereOptions, @Body() user: any) {
+    const updateOrderItem = this.orderItemService.patchOrderItem(orderitem_id, user)
+    return updateOrderItem;
   }
 
   @Delete("/orderitem/:orderitem_id")
   remove(@Param("orderitem_id") orderitem_id: string) {
-    return orderitem_id;
+    const deleteOrderItem = this.orderItemService.deleteOrderItem(orderitem_id)
+    return deleteOrderItem;
   }
 }

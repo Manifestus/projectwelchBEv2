@@ -9,6 +9,8 @@ import {
 } from "routing-controllers";
 import "reflect-metadata";
 import { clientService } from "../services/client.service";
+import { WhereOptions } from "sequelize/types";
+import { IClient } from "src/interfaces/client";
 
 @JsonController()
 export class ClientController {
@@ -36,14 +38,14 @@ export class ClientController {
   }
 
   @Put("/clients/:client_id")
-    put(@Param("id") client_id: string, @Body() user: any) {
-      console.log(client_id, user)
-    return "Updating a user...";
+    put(@Param("id") client_id: WhereOptions<IClient>, @Body() user: any) {
+      const updateClient = this.clientService.patchClient(client_id, user)
+    return updateClient;
   }
 
   @Delete("/clients/:client_id")
   remove(@Param("client_id") client_id: string) {
-    console.log(client_id)
-    return "Removing user...";
+    const removeClient = this.clientService.deleteClient(client_id)
+    return removeClient
   }
 }

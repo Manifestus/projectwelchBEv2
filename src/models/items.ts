@@ -3,15 +3,16 @@ import {
   Column,
   Model,
   PrimaryKey,
-  BelongsToMany,
   AllowNull,
   DataType,
+  HasMany,
 } from "sequelize-typescript";
+import { IItem, IItemCreationAttributes } from "src/interfaces/item";
 import { orderItem } from "./orderitem";
-import { orderedItems } from "./orderedItems";
+
 
 @Table
-export class Items extends Model<Items> {
+export class Items extends Model<IItem, IItemCreationAttributes> {
 
   @PrimaryKey
   @Column({defaultValue: DataType.UUIDV4})
@@ -29,6 +30,6 @@ export class Items extends Model<Items> {
   @Column
   cost!: number;
 
-  @BelongsToMany(() => orderItem, () => orderedItems)
-  orderitem_id!: string;
+  @HasMany(()=> orderItem)
+  orderitem_id!: string
 }

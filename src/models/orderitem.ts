@@ -3,16 +3,17 @@ import {
   Column,
   Model,
   PrimaryKey,
-  BelongsToMany,
   AllowNull,
   ForeignKey,
   DataType,
+  HasMany,
 } from "sequelize-typescript";
-import { orderedItems } from "./orderedItems";
+import { IOrderItem, IOrderItemCreationAttributes } from "src/interfaces/orderitem";
+import { Items } from "./items";
 import { Orders } from "./orders";
 
 @Table
-export class orderItem extends Model <orderItem>{
+export class orderItem extends Model <IOrderItem, IOrderItemCreationAttributes>{
 
   @PrimaryKey
   @Column({defaultValue: DataType.UUIDV4})
@@ -38,9 +39,9 @@ export class orderItem extends Model <orderItem>{
   @Column
   color!: Date;
 
-  @ForeignKey(() => Orders)
-  order_id!: string;
+  @HasMany(() => Orders)
+  order_id!: string
 
-  @BelongsToMany(() => orderItem, () => orderedItems)
+  @ForeignKey(()=> Items)
   item_id!: string;
 }

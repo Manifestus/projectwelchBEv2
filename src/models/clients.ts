@@ -7,10 +7,12 @@ import {
   AllowNull,
   DataType,
 } from "sequelize-typescript";
+import { IClient, IClientCreationAttributes } from "src/interfaces/client";
 import { Orders } from "./orders";
 
+
 @Table
-export class Clients extends Model<Clients> {
+export class Clients extends Model<IClient, IClientCreationAttributes> {
 
   @PrimaryKey
   @Column({ defaultValue: DataType.UUIDV4})
