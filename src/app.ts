@@ -18,7 +18,7 @@ const app = createExpressServer({
 });
 //Sequelize Connector
 try {
-    sequelize.sync().then(() => {
+    sequelize.authenticate().then(() => {
     app.listen(process.env.PORT || 5000);
     app.get("/", (req: any, res: any) => {
       console.log(req)
