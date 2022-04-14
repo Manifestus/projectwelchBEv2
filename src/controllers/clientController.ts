@@ -33,7 +33,7 @@ export class ClientController {
 
   @Post("/clients")
   post(@Body() client: IClient) {
-    console.log(client)
+    console.log(client, "Client Controller**************************************************************************")
     const newClient = this.clientService.createClient(client)
     return newClient
   }
