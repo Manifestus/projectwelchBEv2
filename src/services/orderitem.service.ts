@@ -1,7 +1,7 @@
 import { WhereOptions } from "sequelize/types";
 import { IOrderItem } from "../interfaces/orderitem";
 
-import { orderItem as OrderItemModel } from "../models/orderitem";
+import { orderItem as OrderItemModel } from "../models/orderitems";
 
 export class orderItemService {
   constructor() {}

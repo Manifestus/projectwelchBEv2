@@ -8,7 +8,7 @@ import {
   HasMany,
 } from "sequelize-typescript";
 import { IItem, IItemCreationAttributes } from "src/interfaces/item";
-import { orderItem } from "./orderitem";
+import { orderItem } from "./orderitems";
 
 
 @Table

@@ -8,7 +8,7 @@ import {
   DataType,
 } from "sequelize-typescript";
 import { Clients } from "./clients";
-import { orderItem } from "./orderitem";
+import { orderItem } from "./orderitems";
 import { IOrder, IOrderCreationAttributes } from "src/interfaces/order";
 
 @Table
