@@ -10,6 +10,7 @@ import {
 import "reflect-metadata";
 import { orderItemService } from "../services/orderitem.service";
 import { WhereOptions } from "sequelize/types";
+import { IOrderItem } from "src/interfaces/orderitem";
 
 @JsonController()
 export class OrderItemController {
@@ -31,7 +32,7 @@ export class OrderItemController {
   }
 
   @Post("/orderitem")
-  post(@Body() orderItem: any) {
+  post(@Body() orderItem: IOrderItem) {
     const neworderItems = this.orderItemService.createOrderItem(orderItem);
     return neworderItems;
   }
