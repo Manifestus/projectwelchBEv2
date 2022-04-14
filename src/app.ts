@@ -2,7 +2,7 @@ require("dotenv").config();
 
 import { sequelize } from "./models/index";
 import { createExpressServer } from "routing-controllers";
-import { ClientController } from "./controllers/client.Controller";
+import { ClientController } from "./controllers/client.Controller"
 import { OrderController } from "./controllers/order.Controller";
 import { OrderItemController } from "./controllers/orderitem.Controller";
 
