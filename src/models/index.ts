@@ -4,7 +4,9 @@ import { Items } from "./items";
 import { orderItem } from "./orderitems";
 import { Orders } from "./orders";
 
-const uri: string =`${process.env.DATABASE_URI}` 
+const uri: string =`${process.env.DATABASE_URL}` 
+
+console.log(uri)
 
 export const sequelize = new Sequelize(uri);
 
