@@ -4,7 +4,7 @@ import { Items } from "./items";
 import { orderItem } from "./orderitems";
 import { Orders } from "./orders";
 
-const uri: string =`${process.env.DATABASE_URL}` 
+const uri: string =`${process.env.DATABASE_URL}?sslmode=no-verify` 
 
 console.log(uri)
 
