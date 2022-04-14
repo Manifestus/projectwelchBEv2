@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsnd --respawn ./src/app.ts",
     "start": "node dist/app.js",
-    "build": "tsc --build"
+    "heroku-prebuild": "",
+    "heroku-postbuild": "tsc --build",
+    "build": "tsc --build",
+    "postinstall": "npm run build"
   },
   "keywords": [],
   "author": "",

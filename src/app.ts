@@ -18,13 +18,13 @@ const app = createExpressServer({
 });
 //Sequelize Connector
 try {
-  sequelize.sync().then(() => {
-  app.listen(port);
-  app.get("/", (req: any, res: any) => {
-    console.log(req)
-    res.send("Hello World!");
+    sequelize.authenticate().then(() => {
+    app.listen(port);
+    app.get("/", (req: any, res: any) => {
+      console.log(req)
+      res.send("Hello World!");
+    });
   });
-});
-} catch (error) {
+  } catch (error) {
   
 }
