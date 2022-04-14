@@ -6,6 +6,9 @@ import {
   HasMany,
   AllowNull,
   DataType,
+  CreatedAt,
+  DeletedAt,
+  UpdatedAt,
 } from "sequelize-typescript";
 import { IClient, IClientCreationAttributes } from "src/interfaces/client";
 import { Orders } from "./orders";
@@ -37,6 +40,12 @@ export class Clients extends Model<IClient, IClientCreationAttributes> {
   @AllowNull(false)
   @Column
   address!: string;
+
+  @CreatedAt
+  @UpdatedAt
+  @DeletedAt
+  timestamps=false
+
 
   @HasMany(() => Orders)
   order_id!: string

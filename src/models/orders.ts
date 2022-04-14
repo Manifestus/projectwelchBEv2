@@ -6,6 +6,9 @@ import {
   AllowNull,
   ForeignKey,
   DataType,
+  CreatedAt,
+  DeletedAt,
+  UpdatedAt,
 } from "sequelize-typescript";
 import { Clients } from "./clients";
 import { orderItem } from "./orderitems";
@@ -21,6 +24,11 @@ export class Orders extends Model<IOrder, IOrderCreationAttributes> {
   @AllowNull(false)
   @Column
   date!: Date;
+
+  @CreatedAt
+  @UpdatedAt
+  @DeletedAt
+  timestamps=false
 
   @ForeignKey(()=> Clients)
   client_id!: string

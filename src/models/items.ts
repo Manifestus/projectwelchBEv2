@@ -6,6 +6,9 @@ import {
   AllowNull,
   DataType,
   HasMany,
+  CreatedAt,
+  DeletedAt,
+  UpdatedAt,
 } from "sequelize-typescript";
 import { IItem, IItemCreationAttributes } from "src/interfaces/item";
 import { orderItem } from "./orderitems";
@@ -29,6 +32,11 @@ export class Items extends Model<IItem, IItemCreationAttributes> {
   @AllowNull(false)
   @Column
   cost!: number;
+
+  @CreatedAt
+  @UpdatedAt
+  @DeletedAt
+  timestamps=false
 
   @HasMany(()=> orderItem)
   orderitem_id!: string

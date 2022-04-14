@@ -7,6 +7,9 @@ import {
   ForeignKey,
   DataType,
   HasMany,
+  CreatedAt,
+  DeletedAt,
+  UpdatedAt,
 } from "sequelize-typescript";
 import { IOrderItem, IOrderItemCreationAttributes } from "src/interfaces/orderitem";
 import { Items } from "./items";
@@ -28,7 +31,7 @@ export class orderItem extends Model <IOrderItem, IOrderItemCreationAttributes>{
   size!: number;
 
   @AllowNull(false)
-  @Column
+  @Column({defaultValue: DataType.DATE})
   date!: Date;
 
   @AllowNull(false)
@@ -38,6 +41,11 @@ export class orderItem extends Model <IOrderItem, IOrderItemCreationAttributes>{
   @AllowNull(false)
   @Column
   color!: Date;
+
+  @CreatedAt
+  @UpdatedAt
+  @DeletedAt
+  timestamps=false
 
   @HasMany(() => Orders)
   order_id!: string
