@@ -6,8 +6,6 @@ import { Orders } from "./orders";
 
 const uri: string =`${process.env.DATABASE_URL}?sslmode=no-verify` 
 
-console.log(process.env)
-
 export const sequelize = new Sequelize(uri);
 
 sequelize.addModels([Clients, Orders, orderItem, Items])

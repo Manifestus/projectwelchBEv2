@@ -20,7 +20,6 @@ export class clientService {
   };
   //Post Client
   createClient = async (client: IClientCreationAttributes) => {
-    console.log(client, "Client Service**************************************************************************")
     try {
       const clientRes = await ClientsModel.create(client);
       return clientRes;
