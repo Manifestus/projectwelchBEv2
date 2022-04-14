@@ -10,7 +10,7 @@ import {
 import "reflect-metadata";
 import { clientService } from "../services/client.service";
 import { WhereOptions } from "sequelize/types";
-import { IClient } from "src/interfaces/client";
+import { IClient } from "../interfaces/client";
 
 @JsonController()
 export class ClientController {
