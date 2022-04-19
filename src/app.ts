@@ -12,8 +12,9 @@ const port = 5000;
 const CORS = require("cors");
 
 const corsOption = {
-  origin: "https://projectwelchbe.herokuapp.com/",
+  origin: true,
   optionsSuccessStatus: 200,
+
 };
 
 //Routing init
