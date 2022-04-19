@@ -8,6 +8,14 @@ import { OrderItemController } from "./controllers/orderitemController";
 
 const port = 5000;
 
+//CORS
+const CORS = require("cors");
+
+const corsOption = {
+  origin: "https://projectwelchbe.herokuapp.com/",
+  optionsSuccessStatus: 200,
+};
+
 //Routing init
 console.info(`Starting server on http://localhost:${port}`);
 
@@ -16,6 +24,8 @@ const routes = [ClientController, OrderController, OrderItemController];
 const app = createExpressServer({
   controllers: routes,
 });
+
+app.use(CORS(corsOption));
 //Sequelize Connector
 try {
   sequelize.authenticate().then(() => {
